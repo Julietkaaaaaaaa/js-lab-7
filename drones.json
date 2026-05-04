@@ -1,0 +1,18 @@
+[
+  {
+    "id": 101, "name": "DJI Mini 3 Pro", "shortname": "dji_mini",
+    "description": "Компактний дрон вагою до 250 грамів із записом відео 4K.", "price": "35 000 ₴"
+  },
+  {
+    "id": 102, "name": "DJI Mavic 3", "shortname": "dji_mavic",
+    "description": "Професійний квадрокоптер з камерою Hasselblad. Lorem ipsum.", "price": "85 000 ₴"
+  },
+  {
+    "id": 103, "name": "Autel Evo Lite+", "shortname": "autel_evo",
+    "description": "Дрон з чудовою нічною зйомкою та датчиками перешкод.", "price": "55 000 ₴"
+  },
+  {
+    "id": 104, "name": "FPV Racing Drone", "shortname": "fpv_drone",
+    "description": "Спортивний FPV-дрон для неймовірних швидкостей та трюків.", "price": "18 000 ₴"
+  }
+]
