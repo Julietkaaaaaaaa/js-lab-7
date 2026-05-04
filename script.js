@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const catalogLink = document.getElementById('catalog-link');
     let globalCategories = [];
 
-    // Завантаження каталогу категорій
+    // Завантаження каталогу
     function loadCatalog(e) {
         if(e) e.preventDefault();
-        mainContent.innerHTML = '<div class="text-center mt-20 text-accent">Завантаження каталогу...</div>';
+        mainContent.innerHTML = '<div class="flex justify-center mt-20"><div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-accent"></div></div>';
         
         fetch('categories.json')
             .then(response => {
@@ -16,25 +16,28 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 globalCategories = data;
                 
-                let html = '<h2 class="text-3xl font-bold text-white text-center mb-10">Категорії товарів</h2>';
-                html += '<div class="grid grid-cols-1 md:grid-cols-3 gap-6">';
+                let html = '<div class="text-center mb-12"><h2 class="text-4xl font-extrabold text-white">Категорії пристроїв</h2><div class="w-24 h-1 bg-accent mx-auto mt-4 rounded-full"></div></div>';
+                html += '<div class="grid grid-cols-1 md:grid-cols-3 gap-8">';
                 
                 data.forEach(category => {
                     html += `
-                        <div class="glass-card p-6 rounded-xl cursor-pointer hover:border-accent transition duration-300" onclick="loadCategory('${category.shortname}', '${category.name}')">
-                            <h3 class="text-xl font-bold text-white mb-2">${category.name}</h3>
-                            <p class="text-gray-400 text-sm mb-4">${category.notes}</p>
-                            <span class="text-accent text-sm font-semibold">Перейти в розділ &rarr;</span>
+                        <div class="glass-card p-8 rounded-2xl cursor-pointer group hover:-translate-y-2 transition-all duration-300 hover:shadow-[0_0_30px_rgba(139,92,246,0.3)] relative overflow-hidden" onclick="loadCategory('${category.shortname}', '${category.name}')">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-3xl -mr-10 -mt-10 transition group-hover:bg-accent/20"></div>
+                            <h3 class="text-2xl font-bold text-white mb-4 relative z-10 group-hover:text-accent transition">${category.name}</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed relative z-10">${category.notes}</p>
+                            <div class="mt-6 flex items-center text-accent text-sm font-semibold relative z-10">
+                                Переглянути <span class="ml-2 group-hover:translate-x-2 transition-transform">&rarr;</span>
+                            </div>
                         </div>
                     `;
                 });
                 html += '</div>';
 
-                // Кнопка Specials (вимагалася за лекцією)
                 html += `
-                    <div class="mt-12 text-center pt-8 border-t border-gray-800">
-                        <button onclick="loadSpecials()" class="bg-accent text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition font-medium">
-                            Показати випадкову категорію
+                    <div class="mt-16 text-center">
+                        <button onclick="loadSpecials()" class="relative inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-200 bg-transparent border-2 border-accent rounded-full hover:bg-accent hover:shadow-[0_0_20px_rgba(139,92,246,0.5)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent overflow-hidden group">
+                            <span class="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
+                            <span class="relative">✨ Випадкова пропозиція</span>
                         </button>
                     </div>
                 `;
@@ -43,13 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => {
                 console.error('Помилка:', error);
-                mainContent.innerHTML = '<p class="text-red-500 text-center mt-10">Помилка завантаження (не забудьте запустити через Live Server).</p>';
+                mainContent.innerHTML = '<p class="text-red-400 text-center mt-10">Помилка завантаження (запустіть через Live Server).</p>';
             });
     }
 
     // Завантаження товарів
     window.loadCategory = function(shortname, categoryName) {
-        mainContent.innerHTML = '<div class="text-center mt-20 text-accent">Завантаження товарів...</div>';
+        mainContent.innerHTML = '<div class="flex justify-center mt-20"><div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-accent"></div></div>';
         
         fetch(`${shortname}.json`)
             .then(response => {
@@ -58,32 +61,35 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(data => {
                 let html = `
-                    <div class="mb-8">
-                        <button onclick="document.getElementById('catalog-link').click()" class="text-gray-400 hover:text-white transition flex items-center gap-2 bg-surface px-4 py-2 rounded-lg border border-gray-700">
-                            &larr; Назад до каталогу
+                    <div class="mb-10 flex items-center">
+                        <button onclick="document.getElementById('catalog-link').click()" class="text-gray-400 hover:text-white flex items-center transition bg-surfaceGlow px-4 py-2 rounded-lg border border-white/5 hover:border-white/20">
+                            <span class="mr-2">&larr;</span> Назад
                         </button>
                     </div>
-                    <h2 class="text-3xl font-bold text-white mb-8">${categoryName}</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl font-extrabold text-white">${categoryName}</h2>
+                        <div class="w-24 h-1 bg-accent mx-auto mt-4 rounded-full"></div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 `;
                 
                 data.forEach(item => {
-                    // Зображення СУВОРО до 200x200 пікселів за вимогами лабораторної
                     html += `
-                        <div class="glass-card rounded-xl p-5 flex flex-col items-center hover:-translate-y-1 transition duration-300">
+                        <div class="glass-card rounded-2xl p-5 overflow-hidden group hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_10px_40px_-10px_rgba(139,92,246,0.3)] flex flex-col items-center">
                             
-                            <img src="images/${item.shortname}.jpg" 
-                                 onerror="this.src='https://placehold.co/200x200/171717/3b82f6?text=NO+PHOTO'" 
-                                 alt="${item.name}" 
-                                 class="w-[200px] h-[200px] object-cover rounded-lg mb-4 border border-gray-800 shadow-md">
-                            
-                            <h4 class="text-lg font-bold text-white text-center w-full">${item.name}</h4>
-                            <p class="text-sm text-gray-400 mt-2 flex-grow text-center">${item.description}</p>
-                            
-                            <div class="mt-4 pt-4 border-t border-gray-800 w-full text-center">
-                                <span class="text-xl font-bold text-accent">${item.price}</span>
+                            <div class="relative overflow-hidden rounded-lg mb-6 border border-white/5">
+                                <img src="images/${item.shortname}.jpg" 
+                                     onerror="this.src='https://placehold.co/200x200/121212/8b5cf6?text=NO+PHOTO'" 
+                                     alt="${item.name}" 
+                                     class="w-[200px] h-[200px] object-cover transform group-hover:scale-110 transition duration-500">
                             </div>
                             
+                            <h4 class="text-xl font-bold text-white mb-2 text-center">${item.name}</h4>
+                            <p class="text-sm text-gray-400 flex-grow text-center leading-relaxed">${item.description}</p>
+                            
+                            <div class="mt-6 pt-4 border-t border-white/10 w-full flex justify-center">
+                                <span class="text-xl font-bold text-accent drop-shadow-md">${item.price}</span>
+                            </div>
                         </div>
                     `;
                 });
@@ -93,12 +99,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-    // Випадкова категорія (Спецпропозиція)
+    // Випадкова категорія
     window.loadSpecials = function() {
         if(globalCategories.length === 0) return;
         const randomIndex = Math.floor(Math.random() * globalCategories.length);
         const randomCategory = globalCategories[randomIndex];
-        loadCategory(randomCategory.shortname, "Рекомендуємо: " + randomCategory.name);
+        loadCategory(randomCategory.shortname, "Випадкова пропозиція: " + randomCategory.name);
     }
 
     catalogLink.addEventListener('click', loadCatalog);
