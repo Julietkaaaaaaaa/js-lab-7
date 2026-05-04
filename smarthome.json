@@ -1,0 +1,18 @@
+[
+  {
+    "id": 301, "name": "Робот-пилосос Roborock", "shortname": "roborock",
+    "description": "Флагманський робот з миттям підлоги та штучним інтелектом.", "price": "28 000 ₴"
+  },
+  {
+    "id": 302, "name": "Розумний замок Aqara", "shortname": "smart_lock",
+    "description": "Дверний замок з відбитком пальця, NFC та Apple HomeKey.", "price": "12 000 ₴"
+  },
+  {
+    "id": 303, "name": "IP-камера Reolink", "shortname": "ip_cam",
+    "description": "Бездротова камера безпеки із сонячною панеллю.", "price": "4 500 ₴"
+  },
+  {
+    "id": 304, "name": "Хаб Homey Pro", "shortname": "homey",
+    "description": "Універсальний центр, що об'єднує всі розумні пристрої в домі.", "price": "16 000 ₴"
+  }
+]
