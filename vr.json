@@ -1,0 +1,18 @@
+[
+  {
+    "id": 201, "name": "Meta Quest 3", "shortname": "quest3",
+    "description": "Автономна VR-гарнітура з кольоровою змішаною реальністю.", "price": "24 000 ₴"
+  },
+  {
+    "id": 202, "name": "Sony PlayStation VR2", "shortname": "psvr2",
+    "description": "Шолом нового покоління ексклюзивно для консолі PS5.", "price": "26 000 ₴"
+  },
+  {
+    "id": 203, "name": "Valve Index", "shortname": "valve_index",
+    "description": "Преміальний VR-комплект для ПК з точним відстеженням рухів.", "price": "45 000 ₴"
+  },
+  {
+    "id": 204, "name": "Apple Vision Pro", "shortname": "vision_pro",
+    "description": "Просторовий комп'ютер для роботи та розваг в AR. Lorem ipsum.", "price": "140 000 ₴"
+  }
+]
