@@ -1,0 +1,30 @@
+[
+  {
+    "id": 101, 
+    "name": "Apple AirPods Max", 
+    "shortname": "airpods_max",
+    "description": "Бездротові навушники з активним шумозаглушенням та просторовим аудіо.", 
+    "price": "22 000 ₴"
+  },
+  {
+    "id": 102, 
+    "name": "Sony WH-1000XM5", 
+    "shortname": "sony_xm5",
+    "description": "Флагманські навушники з найкращим у класі шумозаглушенням та HI-RES звуком.", 
+    "price": "15 000 ₴"
+  },
+  {
+    "id": 103, 
+    "name": "B&O Beoplay H95", 
+    "shortname": "bo_h95",
+    "description": "Ексклюзивні навушники з титановими динаміками та преміальними матеріалами.", 
+    "price": "38 000 ₴"
+  },
+  {
+    "id": 104, 
+    "name": "Sennheiser Momentum 4", 
+    "shortname": "momentum4",
+    "description": "Аудіофільське звучання та до 60 годин автономної роботи. Lorem ipsum.", 
+    "price": "14 000 ₴"
+  }
+]
