@@ -78,8 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="glass-card rounded-2xl p-5 overflow-hidden group hover:-translate-y-1 transition-all duration-300 hover:shadow-[0_10px_40px_-10px_rgba(139,92,246,0.3)] flex flex-col items-center">
                             
                             <div class="relative overflow-hidden rounded-lg mb-6 border border-white/5">
-                                <img src="images/${item.shortname}.jpg" 
-                                     onerror="this.src='https://placehold.co/200x200/121212/8b5cf6?text=NO+PHOTO'" 
+                               <img src="" 
+                                     onerror="this.src='https://placehold.co/200x200/121212/8b5cf6?text=${item.shortname.toUpperCase()}'" 
                                      alt="${item.name}" 
                                      class="w-[200px] h-[200px] object-cover transform group-hover:scale-110 transition duration-500">
                             </div>
